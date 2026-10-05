@@ -1,0 +1,8 @@
+{% if page.url contains '/ar/' %}
+  <!-- If the user is on the Arabic page, strip the /ar/ to send them back to English -->
+  {% assign english_url = page.url | replace: '/ar/', '/' %}
+  <a href="{{ english_url }}" class="btn btn--arabic" dir="ltr">Read in English 🇬🇧</a>
+{% else %}
+  <!-- If the user is on the English page, append /ar/ -->
+  <a href="{{ page.url }}ar/" class="btn btn--arabic" dir="rtl">اقرأ بالعربي 🇾🇪</a>
+{% endif %}

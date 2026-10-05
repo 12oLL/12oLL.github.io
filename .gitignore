@@ -2,3 +2,54 @@ _site
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
+# macOS
+.DS_Store
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Build output
+dist/
+build/
+out/
+
+# Logs
+*.log
+logs/
+
+# Caches
+.cache/
+*.cache
+
+# Python
+__pycache__/
+.pytest_cache/
+
+# Databases / local data
+*.sqlite
+*.sqlite3
+*.db
+
+# OS / temp
+*.tmp
+*.temp
+*.bak
+
+# Coverage
+coverage/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
