@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://12oll.github.io/sitemap.xml

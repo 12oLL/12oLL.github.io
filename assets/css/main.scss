@@ -1,5 +1,4 @@
 ---
-# Only the main Sass file needs front matter (the dashes are required)
 ---
 @charset "utf-8";
 
@@ -70,106 +69,97 @@ font-family: "Andale Mono", "Courier", monospace !important;
 
 
 /* ==========================================================================
-   4. BLOG CARD COMPONENTS
+   4. CUSTOM HACKER BLOG CARDS (PURE CUSTOM CLASS)
    ========================================================================== */
-.archive__item {
+.cyber-card {
   display: flex !important;
-  flex-direction: row !important;
-  align-items: stretch !important;
-  background: #080808 !important; 
-  border: 1px solid #1a1a1a !important; 
-  border-radius: 4px !important; 
+  background: #080808 !important;
+  border: 1px solid #1a1a1a !important;
+  border-radius: 6px !important;
   overflow: hidden !important;
-  margin-bottom: 20px !important;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  margin-bottom: 25px !important;
+  height: 220px !important; /* Locks the exact height of the card */
+  transition: border-color 0.3s ease !important;
 }
 
-.archive__item:hover {
-  border-color: #333 !important; 
-  transform: translateX(5px); 
+.cyber-card:hover {
+  border-color: #810505 !important;
 }
 
-/* Left Side: Text Body Content */
-.archive__item-body {
+/* --- Left Side: Text --- */
+.cyber-card-content {
   flex: 1 !important;
-  padding: 35px !important;
+  padding: 30px !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
+}
+
+.cyber-card-title {
+  margin: 0 0 10px 0 !important;
+  font-size: 22px !important;
+  line-height: 1.2 !important;
+}
+
+.cyber-card-title a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.cyber-card-title a:hover {
+  color: #53043c !important;
+}
+
+.cyber-card-meta {
+  color: #be2e96 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  margin: 0 0 15px 0 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.cyber-card-excerpt {
+  color: #a0a0a0 !important;
+  font-size: 14px !important;
+  margin: 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
   overflow: hidden !important;
 }
 
-/* Card Title (Links & Underline Removal) */
-.archive__item-title {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 22px !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.04em;
+/* --- Right Side: Image (Zero Spacing) --- */
+.cyber-card-image {
+  flex: 0 0 345px !important; /* Strict image width */
+  background: #000 !important;
 }
 
-.archive__item-title a {
-  text-decoration: none !important;
-  color: #ffffff !important;
-}
-
-.archive__item-title a:hover {
-  color: #831664 !important;
-}
-
-/* Card Excerpt Description */
-.archive__item-excerpt {
-  margin: 0 !important;
-  padding: 0 !important;
-  color: #a0a0a0 !important;
-  font-size: 14px !important;
-  line-height: 1.6 !important;
-}
-
-/* Metadata (Category & Date) */
-.archive__item .page__meta {
-  margin: 0 !important;
-  padding: 0 !important;
-  color: #06cf56 !important;
-  font-size: 11px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* Right Side: Image Teaser */
-.archive__item-teaser {
-  flex: 0 0 345px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border-left: none important;
-  background: transparent !important; /* Makes any empty space match the card perfectly */
-  display: flex !important;
-}
-
-.archive__item-teaser a {
-  display: flex !important;
-  width: 100% !important;
-  height: 100% !important;
-  flex-grow: 1 !important;
-}
-
-/* Image Teaser: Full Color & Brightness */
-.archive__item-teaser img {
+.cyber-card-image a {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important; /* Stops the zooming and shows the full image */  filter: none !important; /* Completely removes any grayscale or muting */
-  object-position: center right  !important; /* Anchors it flush to the right edge */
-  opacity: 1 !important; /* Full, crisp brightness by default */
-  margin: 0 !important;
-  padding: 0 !important;
-  transition: transform 0.4s ease !important;
 }
 
-.archive__item:hover .archive__item-teaser img {
-  transform: scale(1.05) !important; /* Clean zoom effect on hover */
+.cyber-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Fills edge-to-edge with no padding */
+  display: block !important;
 }
 
+/* --- Mobile --- */
+@media (max-width: 768px) {
+  .cyber-card {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+  .cyber-card-image {
+    flex: none !important;
+    width: 100% !important;
+    height: 200px !important;
+    order: -1 !important;
+  }
+}
 
 /* ==========================================================================
    5. MOBILE RESPONSIVENESS
@@ -379,7 +369,7 @@ font-family: "Andale Mono", "Courier", monospace !important;
   line-height: 1.7 !important;
 }
 
-.page__content img {
+.page__content img:not(.folder-thumb) {
   max-width: 80% !important;
   height: auto !important;
   display: block !important;
@@ -581,17 +571,22 @@ font-family: "Andale Mono", "Courier", monospace !important;
   box-shadow: 0 5px 15px rgba(6, 207, 86, 0.1);
 }
 
-/* New Image Thumbnail Styles */
 .folder-thumb {
   width: 100%;
-  height: 100px;
+  height: 90px;
   object-fit: contain;
-  border-radius: 4px;
   margin-bottom: 12px;
-  border: 1px solid #333;
+  
+  /* Reset the global blog image styling */
+  background-color: transparent !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  
   opacity: 0.85;
-  transition: opacity 0.4s ease;
-  background-color: #111; /* Blends nicely with dark mode */
+  transition: opacity 0.2s ease;
 }
 
 .folder-card:hover .folder-thumb {
@@ -600,22 +595,24 @@ font-family: "Andale Mono", "Courier", monospace !important;
 
 .folder-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Keeps the icon at the top if text wraps */
+  gap: 12px;               /* Cleaner spacing than margin */
   border-bottom: 1px solid #222;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .folder-icon {
-  font-size: 1.2rem; /* Smaller icon */
+  font-size: 1.4rem;
   color: #06cf56;
-  margin-right: 8px;
+  margin-top: 2px; /* Nudges the icon down to perfectly align with text */
 }
 
 .folder-title {
-  font-size: 1rem; /* Smaller text */
+  font-size: 1.1rem;
   margin: 0;
   color: #fff;
+  line-height: 1.3; /* Improves readability when text wraps */
 }
 
 .file-list {
@@ -649,9 +646,10 @@ font-family: "Andale Mono", "Courier", monospace !important;
 /* ==========================================================================
    19. WIKI PAGE INTERNAL STYLING
    ========================================================================== */
+
 /* Changes the background color just for wiki pages to a darker terminal gray */
 .hacker-wiki {
-  background-color: #0a0a0a !important; 
+  background-color: #51060660 !important; 
 }
 
 /* Makes all paragraph text inside the wiki use a monospace hacker font */
@@ -667,4 +665,325 @@ font-family: "Andale Mono", "Courier", monospace !important;
 .hacker-wiki .page__content h3 {
   color: #00f0ff !important; 
   border-bottom: 1px dashed #333;
+}
+
+/* ==========================================================================
+   20. WIKI DYNAMIC ENTRANCE ANIMATION
+   ========================================================================== */
+   
+/* 1. Define the smooth slide-up and fade-in movement */
+@keyframes folderEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* Starts slightly lower */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Lands in natural position */
+  }
+}
+
+/* 2. Attach the animation to the cards */
+.folder-card {
+  opacity: 0; /* Keeps them invisible before the animation starts */
+  /* cubic-bezier gives it a natural "snap" into place rather than a robotic slide */
+  animation: folderEntrance 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 3. SCSS Magic Loop: Staggers the animation delay for up to 30 folders */
+@for $i from 1 through 30 {
+  .folder-card:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.60}s; /* Each folder waits a tiny bit longer to load */
+  }
+}
+
+/* ==========================================================================
+   21. WIKI LANDING PAGE FIXES
+   ========================================================================== */
+body.wiki-home {
+  background-color: #100f0fa8 !important;
+}
+
+/* Force the title color to yellow (removed the conflicting border here) */
+body.wiki-home div#main h1.page__title,
+body.wiki-home div#main h1.page__title a {
+  color: #775454 !important; 
+  background-color: transparent !important; 
+  background: none !important;
+  border-bottom: none !important; 
+  text-align: center !important; /* Centers the title text */
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+  font-family: Consolas, monospace;
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+/* Expand the main content area so the grid has room to breathe */
+body.wiki-home #main {
+  max-width: 1200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ==========================================================================
+   22. HACKTRICKS-STYLE WIKI DASHBOARD
+   ========================================================================== */
+   
+/* Removes default text decorations from the card wrapper link */
+.folder-card-link {
+  text-decoration: none !important;
+  display: block;
+}
+
+.folder-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 1.2rem;
+  transition: all 0.9s ease;
+  height: 100%;
+}
+
+.folder-card:hover {
+  border-color: #06cf56;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(6, 207, 86, 0.1);
+}
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: none !important; /* Clean modern look without internal lines */
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.folder-icon {
+  font-size: 1.5rem;
+  color: #06cf56;
+}
+
+.folder-title {
+  font-size: 1.1rem;
+  margin: 0 0 4px 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Article counter style */
+.file-count {
+  font-size: 0.8rem;
+  color: #777;
+  font-family: "Consolas", monospace;
+}
+
+/* ==========================================================================
+   #23. WIKI COMPACT CARD GRID STYLING
+   ========================================================================== */
+/* ==========================================================================
+   WIKI DASHBOARD GRID FIX
+   ========================================================================== */
+.wiki-directory {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+.folder-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  height: auto
+}
+
+.folder-thumb {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 10px;
+}
+
+.folder-icon {
+  font-size: 1.3rem;
+  color: #06cf56;
+}
+
+.folder-title {
+  font-size: 1rem;
+  margin: 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+.file-count {
+  font-size: 0.75rem;
+  color: #777;
+  font-family: "Consolas", monospace;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.file-list li {
+  padding: 5px 0;
+  border-bottom: 1px dashed #1a1a1a;
+}
+
+.file-list li:last-child {
+  border-bottom: none;
+}
+
+.file-list a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-list a:hover {
+  color: #06cf56;
+}
+
+.file-list i {
+  color: #06cf56;
+  font-size: 0.75rem;
+}
+
+.explore-more-container {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #222;
+  text-align: right;
+}
+
+.explore-more-btn {
+  font-size: 0.75rem;
+  color: #f3d915;
+  text-decoration: none;
+  font-family: "Consolas", monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.explore-more-btn:hover {
+  color: #06cf56;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   24. WIKI CARDs & EXPLORE MORE STYLING
+   ========================================================================== */
+   
+.folder-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.file-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed #1a1a1a;
+}
+
+.file-list li:last-child {
+  border-bottom: none;
+}
+
+.file-list a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-list a:hover {
+  color: #06cf56;
+}
+
+.file-list i {
+  color: #06cf56;
+  font-size: 0.8rem;
+}
+
+/* Explore More Footer Button */
+.explore-more-container {
+  margin-top: auto; /* Pushes the button cleanly to the bottom of the card */
+  padding-top: 12px;
+  border-top: 1px solid #222;
+  text-align: right;
+}
+
+.explore-more-btn {
+  font-size: 0.8rem;
+  color: #f3d915;
+  text-decoration: none;
+  font-family: "Consolas", monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s ease;
+}
+
+.explore-more-btn:hover {
+  color: #06cf56;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   25. SECURITY WIKI HOME CENTERING & GRID
+   ========================================================================== */
+
+/* Centers the Security Wiki page title at the top */
+body.wiki-home .page__title, 
+.classes-wiki-home .page__title,
+[class*="wiki-home"] .page__title {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* Grid container setup */
+.wiki-directory {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  align-items: start;
 }

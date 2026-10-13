@@ -1,31 +1,27 @@
-{% assign teaser = post.header.teaser %}
+{% if post.header.teaser %}
+  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
 
-<div class="{{ include.type | default: 'list' }}__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <!-- Left Side: Text Content -->
-    <div class="archive__item-body">
-      <h2 class="archive__item-title" itemprop="headline">
-        <a href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
-      </h2>
-      
-      <p class="archive__item-excerpt" itemprop="description">
-        {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
-      </p>
-      
-      <p class="page__meta">
-        <strong>{{ post.categories | join: ", " }}</strong> &nbsp;·&nbsp; {{ post.date | date: "%b %d, %Y" }}
-      </p>
+<div class="cyber-card">
+  <div class="cyber-card-content">
+    <h2 class="cyber-card-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h2>
+    <div class="cyber-card-meta">
+      {{ post.categories | first }} &middot; {{ post.date | date: "%b %d, %Y" }}
     </div>
-
-    <!-- Right Side: Image Wrapper (Natural Flex Item) -->
-    {% if teaser %}
-      <div class="archive__item-teaser">
-        <a href="{{ post.url | relative_url }}">
-          <img src="{{ teaser | relative_url }}" alt="">
-        </a>
-      </div>
-    {% endif %}
-
-  </article>
+    <div class="cyber-card-excerpt">
+      {{ post.excerpt | strip_html | truncatewords: 20 }}
+    </div>
+  </div>
+  
+  {% if teaser %}
+  <div class="cyber-card-image">
+    <a href="{{ post.url | relative_url }}">
+      <img src="{{ teaser | relative_url }}" alt="{{ post.title }}">
+    </a>
+  </div>
+  {% endif %}
 </div>

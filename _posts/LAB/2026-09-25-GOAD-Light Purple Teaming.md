@@ -2,13 +2,14 @@
 header:
  image: /assets/images/GOAD-Light/Purple.png
  teaser: /assets/images/GOAD-Light/Purple.png
-title: "GOAD-Light-Purple-Teaming"
+title: "GOAD-Light Purple Teaming"
 toc: true
 toc_sticky: true
 author_profile: true
+layout: single
 categories:
   - LAB
-excerpt: "Breaking into AD & Detection Engineering and Analysis"
+excerpt: "Overtaking the GOAD-Light AD Forest & Analyzing How We got in, Engineer Detection Methods To Mitigate and Prevent Breach"
 tags:
   - Active Directory
   - Penetration Testing
