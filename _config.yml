@@ -4,7 +4,7 @@ email: ""
 description: >- 
   Personal security wiki, technical portfolio, and knowledge base. Documenting Red Teaming, Malware Analysis, and Purple Teaming research.
 github_username: 12oLL
-minimal_mistakes_skin: dark
+minimal_mistakes_skin: "dark"
 search: true
 url: "https://12oll.github.io"
 baseurl: ""

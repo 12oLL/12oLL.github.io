@@ -2,6 +2,8 @@
 ---
 @charset "utf-8";
 
+@import "minimal-mistakes/skins/dark"; // Matches your _config.yml skin
+@import "minimal-mistakes";
 /* ==========================================================================
    1. GLOBAL THEME OVERRIDES
    ========================================================================== */
@@ -10,9 +12,6 @@ $text-color: #831664 !default;
 $muted-text-color: #ffffff !default;
 $primary-color: #ffffff !default;
 $border-color: #fff !default;
-
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
-@import "minimal-mistakes";
 
 
 /* ==========================================================================
