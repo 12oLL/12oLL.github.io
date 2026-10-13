@@ -2,8 +2,6 @@
 ---
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/dark"; // Matches your _config.yml skin
-@import "minimal-mistakes";
 /* ==========================================================================
    1. GLOBAL THEME OVERRIDES
    ========================================================================== */
@@ -13,7 +11,8 @@ $muted-text-color: #ffffff !default;
 $primary-color: #ffffff !default;
 $border-color: #fff !default;
 
-
+@import "minimal-mistakes/skins/dark"; // Matches your _config.yml skin
+@import "minimal-mistakes";
 /* ==========================================================================
    2. NAVIGATION BAR (MASTHEAD)
    ========================================================================== */
